@@ -1,0 +1,1019 @@
+{
+  "seed": 7,
+  "params": {
+    "route_setup_min": 1,
+    "approach_lead_min": 3,
+    "segment_interval_min": 2,
+    "running_noise": 0.03
+  },
+  "train_types": {
+    "passenger": {
+      "speed_kmh": 80,
+      "accel_min": 2,
+      "brake_min": 1.5,
+      "weight": 3
+    },
+    "container": {
+      "speed_kmh": 65,
+      "accel_min": 5,
+      "brake_min": 3,
+      "weight": 1.5
+    },
+    "freight": {
+      "speed_kmh": 55,
+      "accel_min": 7,
+      "brake_min": 4,
+      "weight": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "EAST",
+      "name": "на Шалкар",
+      "type": "boundary",
+      "x": 1080,
+      "y": 200
+    },
+    {
+      "id": "R5",
+      "name": "Р-5",
+      "type": "siding",
+      "x": 990,
+      "y": 194,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1100
+        },
+        {
+          "id": "2",
+          "length_m": 850
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "name": "Р-4",
+      "type": "siding",
+      "x": 905,
+      "y": 206,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1100
+        },
+        {
+          "id": "2",
+          "length_m": 850
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "name": "Р-3",
+      "type": "siding",
+      "x": 820,
+      "y": 196,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1100
+        },
+        {
+          "id": "2",
+          "length_m": 1100
+        },
+        {
+          "id": "3",
+          "length_m": 850
+        }
+      ]
+    },
+    {
+      "id": "OPOR",
+      "name": "Опорная",
+      "type": "junction",
+      "x": 735,
+      "y": 212,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1200
+        },
+        {
+          "id": "2",
+          "length_m": 1150
+        },
+        {
+          "id": "3",
+          "length_m": 1100
+        },
+        {
+          "id": "4",
+          "length_m": 1050
+        },
+        {
+          "id": "5",
+          "length_m": 900
+        }
+      ]
+    },
+    {
+      "id": "R6",
+      "name": "Р-6",
+      "type": "siding",
+      "x": 770,
+      "y": 118,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1100
+        },
+        {
+          "id": "2",
+          "length_m": 900
+        }
+      ]
+    },
+    {
+      "id": "ATY",
+      "name": "на Атырау",
+      "type": "boundary",
+      "x": 805,
+      "y": 36
+    },
+    {
+      "id": "R2",
+      "name": "Р-2",
+      "type": "siding",
+      "x": 650,
+      "y": 200,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1100
+        },
+        {
+          "id": "2",
+          "length_m": 850
+        }
+      ]
+    },
+    {
+      "id": "R1",
+      "name": "Р-1",
+      "type": "siding",
+      "x": 565,
+      "y": 206,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1100
+        },
+        {
+          "id": "2",
+          "length_m": 850
+        }
+      ]
+    },
+    {
+      "id": "JUNC",
+      "name": "Бейнеу",
+      "type": "junction",
+      "x": 480,
+      "y": 200,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1150
+        },
+        {
+          "id": "2",
+          "length_m": 1150
+        },
+        {
+          "id": "3",
+          "length_m": 1100
+        },
+        {
+          "id": "4",
+          "length_m": 1100
+        },
+        {
+          "id": "5",
+          "length_m": 1100
+        },
+        {
+          "id": "6",
+          "length_m": 1100
+        }
+      ]
+    },
+    {
+      "id": "R7",
+      "name": "Р-7",
+      "type": "siding",
+      "x": 560,
+      "y": 292,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1100
+        },
+        {
+          "id": "2",
+          "length_m": 900
+        }
+      ]
+    },
+    {
+      "id": "UZB",
+      "name": "на Узбекистан",
+      "type": "boundary",
+      "x": 630,
+      "y": 354
+    },
+    {
+      "id": "SAY",
+      "name": "Сай-Утёс",
+      "type": "junction",
+      "x": 400,
+      "y": 135,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1200
+        },
+        {
+          "id": "2",
+          "length_m": 1150
+        },
+        {
+          "id": "3",
+          "length_m": 1100
+        },
+        {
+          "id": "4",
+          "length_m": 950
+        }
+      ]
+    },
+    {
+      "id": "CEM",
+      "name": "Цемзавод",
+      "type": "industrial",
+      "x": 455,
+      "y": 62,
+      "terminal_clear_min": 30,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 900
+        },
+        {
+          "id": "2",
+          "length_m": 900
+        },
+        {
+          "id": "3",
+          "length_m": 850
+        }
+      ]
+    },
+    {
+      "id": "RA",
+      "name": "Р-А",
+      "type": "siding",
+      "x": 315,
+      "y": 100,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1100
+        },
+        {
+          "id": "2",
+          "length_m": 1100
+        },
+        {
+          "id": "3",
+          "length_m": 850
+        }
+      ]
+    },
+    {
+      "id": "AKTAU",
+      "name": "Актау",
+      "type": "port",
+      "x": 210,
+      "y": 100,
+      "terminal_clear_min": 20,
+      "tracks": [
+        {
+          "id": "M1",
+          "length_m": 900
+        },
+        {
+          "id": "M2",
+          "length_m": 900
+        },
+        {
+          "id": "P1",
+          "length_m": 1100,
+          "kind": "port"
+        },
+        {
+          "id": "P2",
+          "length_m": 1100,
+          "kind": "port"
+        },
+        {
+          "id": "P3",
+          "length_m": 1100,
+          "kind": "port"
+        },
+        {
+          "id": "P4",
+          "length_m": 1100,
+          "kind": "port"
+        },
+        {
+          "id": "P5",
+          "length_m": 1100,
+          "kind": "port"
+        },
+        {
+          "id": "P6",
+          "length_m": 1100,
+          "kind": "port"
+        }
+      ]
+    },
+    {
+      "id": "JET",
+      "name": "Жетыбай",
+      "type": "junction",
+      "x": 400,
+      "y": 268,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1150
+        },
+        {
+          "id": "2",
+          "length_m": 1100
+        },
+        {
+          "id": "3",
+          "length_m": 1050
+        },
+        {
+          "id": "4",
+          "length_m": 900
+        }
+      ]
+    },
+    {
+      "id": "ZHAN",
+      "name": "Жанаозен",
+      "type": "industrial",
+      "x": 440,
+      "y": 354,
+      "terminal_clear_min": 30,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 900
+        },
+        {
+          "id": "2",
+          "length_m": 900
+        },
+        {
+          "id": "3",
+          "length_m": 850
+        },
+        {
+          "id": "4",
+          "length_m": 850
+        }
+      ]
+    },
+    {
+      "id": "RK",
+      "name": "Р-К",
+      "type": "siding",
+      "x": 315,
+      "y": 302,
+      "tracks": [
+        {
+          "id": "1",
+          "length_m": 1100
+        },
+        {
+          "id": "2",
+          "length_m": 900
+        }
+      ]
+    },
+    {
+      "id": "KURYK",
+      "name": "Курык",
+      "type": "port",
+      "x": 210,
+      "y": 302,
+      "terminal_clear_min": 20,
+      "tracks": [
+        {
+          "id": "M1",
+          "length_m": 900
+        },
+        {
+          "id": "P1",
+          "length_m": 1100,
+          "kind": "port"
+        },
+        {
+          "id": "P2",
+          "length_m": 1100,
+          "kind": "port"
+        },
+        {
+          "id": "P3",
+          "length_m": 1100,
+          "kind": "port"
+        },
+        {
+          "id": "P4",
+          "length_m": 1100,
+          "kind": "port"
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "a": "EAST",
+      "b": "R5",
+      "length_km": 22
+    },
+    {
+      "a": "R5",
+      "b": "R4",
+      "length_km": 28
+    },
+    {
+      "a": "R4",
+      "b": "R3",
+      "length_km": 26
+    },
+    {
+      "a": "R3",
+      "b": "OPOR",
+      "length_km": 14
+    },
+    {
+      "a": "OPOR",
+      "b": "R6",
+      "length_km": 24
+    },
+    {
+      "a": "R6",
+      "b": "ATY",
+      "length_km": 20
+    },
+    {
+      "a": "OPOR",
+      "b": "R2",
+      "length_km": 16
+    },
+    {
+      "a": "R2",
+      "b": "R1",
+      "length_km": 27
+    },
+    {
+      "a": "R1",
+      "b": "JUNC",
+      "length_km": 25
+    },
+    {
+      "a": "JUNC",
+      "b": "R7",
+      "length_km": 26
+    },
+    {
+      "a": "R7",
+      "b": "UZB",
+      "length_km": 22
+    },
+    {
+      "a": "JUNC",
+      "b": "SAY",
+      "length_km": 15
+    },
+    {
+      "a": "SAY",
+      "b": "RA",
+      "length_km": 15
+    },
+    {
+      "a": "SAY",
+      "b": "CEM",
+      "length_km": 10,
+      "max_speed_kmh": 40
+    },
+    {
+      "a": "RA",
+      "b": "AKTAU",
+      "length_km": 24,
+      "max_speed_kmh": 50
+    },
+    {
+      "a": "JUNC",
+      "b": "JET",
+      "length_km": 14
+    },
+    {
+      "a": "JET",
+      "b": "RK",
+      "length_km": 14
+    },
+    {
+      "a": "JET",
+      "b": "ZHAN",
+      "length_km": 30,
+      "max_speed_kmh": 60
+    },
+    {
+      "a": "RK",
+      "b": "KURYK",
+      "length_km": 20,
+      "max_speed_kmh": 50
+    }
+  ],
+  "ports": [
+    {
+      "node": "AKTAU",
+      "berths": 1,
+      "processing_min": 60,
+      "load_min_per_wagon": 3
+    },
+    {
+      "node": "KURYK",
+      "berths": 1,
+      "processing_min": 60,
+      "load_min_per_wagon": 3
+    }
+  ],
+  "id": "day1",
+  "name": "День 1 — спокойный, мелкие сбои",
+  "horizon": "30:00",
+  "trains": [
+    {
+      "id": "P101",
+      "type": "passenger",
+      "origin": "EAST",
+      "destination": "AKTAU",
+      "appear": "05:00",
+      "length_m": 450,
+      "wagons": 14,
+      "stops": [
+        {
+          "node": "JUNC",
+          "min_dwell_min": 15,
+          "not_before": "07:20"
+        }
+      ],
+      "planned_arrival": "08:45"
+    },
+    {
+      "id": "P102",
+      "type": "passenger",
+      "origin": "AKTAU",
+      "destination": "EAST",
+      "appear": "07:00",
+      "length_m": 450,
+      "wagons": 14,
+      "stops": [
+        {
+          "node": "AKTAU",
+          "not_before": "07:00"
+        },
+        {
+          "node": "JUNC",
+          "min_dwell_min": 15,
+          "not_before": "08:10"
+        }
+      ],
+      "planned_arrival": "10:45"
+    },
+    {
+      "id": "P103",
+      "type": "passenger",
+      "origin": "EAST",
+      "destination": "AKTAU",
+      "appear": "15:30",
+      "length_m": 450,
+      "wagons": 14,
+      "stops": [
+        {
+          "node": "JUNC",
+          "min_dwell_min": 15,
+          "not_before": "17:50"
+        }
+      ],
+      "planned_arrival": "19:15"
+    },
+    {
+      "id": "P104",
+      "type": "passenger",
+      "origin": "AKTAU",
+      "destination": "EAST",
+      "appear": "17:30",
+      "length_m": 450,
+      "wagons": 14,
+      "stops": [
+        {
+          "node": "AKTAU",
+          "not_before": "17:30"
+        },
+        {
+          "node": "JUNC",
+          "min_dwell_min": 15,
+          "not_before": "18:40"
+        }
+      ],
+      "planned_arrival": "21:15"
+    },
+    {
+      "id": "C201",
+      "type": "container",
+      "origin": "EAST",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "01:00",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "target_ferry": "FA1",
+      "planned_arrival": "04:50"
+    },
+    {
+      "id": "C202",
+      "type": "container",
+      "origin": "EAST",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "03:30",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "target_ferry": "FA1",
+      "planned_arrival": "07:20"
+    },
+    {
+      "id": "C203",
+      "type": "container",
+      "origin": "EAST",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "06:30",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "target_ferry": "FK1",
+      "planned_arrival": "10:20"
+    },
+    {
+      "id": "C204",
+      "type": "container",
+      "origin": "EAST",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "09:00",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "appear_actual": "09:40",
+      "target_ferry": "FK1",
+      "forecasts": [
+        {
+          "at": "07:00",
+          "eta": "09:25"
+        }
+      ],
+      "planned_arrival": "12:50"
+    },
+    {
+      "id": "C205",
+      "type": "container",
+      "origin": "EAST",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "11:40",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "target_ferry": "FA2",
+      "planned_arrival": "15:30"
+    },
+    {
+      "id": "C206",
+      "type": "container",
+      "origin": "EAST",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "14:20",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "target_ferry": "FA2",
+      "planned_arrival": "18:10"
+    },
+    {
+      "id": "C207",
+      "type": "container",
+      "origin": "EAST",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "17:00",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "target_ferry": "FK2",
+      "planned_arrival": "20:50"
+    },
+    {
+      "id": "C208",
+      "type": "container",
+      "origin": "EAST",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "19:40",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "target_ferry": "FA3",
+      "planned_arrival": "23:30"
+    },
+    {
+      "id": "F301",
+      "type": "freight",
+      "origin": "EAST",
+      "destination": "JUNC",
+      "appear": "07:30",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "10:55"
+    },
+    {
+      "id": "F303",
+      "type": "freight",
+      "origin": "EAST",
+      "destination": "AKTAU",
+      "appear": "12:30",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "17:05"
+    },
+    {
+      "id": "F302",
+      "type": "freight",
+      "origin": "KURYK",
+      "destination": "EAST",
+      "appear": "04:00",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "08:35"
+    },
+    {
+      "id": "F304",
+      "type": "freight",
+      "origin": "AKTAU",
+      "destination": "EAST",
+      "appear": "08:30",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "13:10"
+    },
+    {
+      "id": "F306",
+      "type": "freight",
+      "origin": "JUNC",
+      "destination": "EAST",
+      "appear": "10:00",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "13:35"
+    },
+    {
+      "id": "F308",
+      "type": "freight",
+      "origin": "KURYK",
+      "destination": "EAST",
+      "appear": "13:00",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "17:35"
+    },
+    {
+      "id": "F310",
+      "type": "freight",
+      "origin": "AKTAU",
+      "destination": "EAST",
+      "appear": "16:00",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "20:40"
+    },
+    {
+      "id": "F312",
+      "type": "freight",
+      "origin": "JUNC",
+      "destination": "EAST",
+      "appear": "18:30",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "22:05"
+    },
+    {
+      "id": "F314",
+      "type": "freight",
+      "origin": "AKTAU",
+      "destination": "EAST",
+      "appear": "21:00",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "25:40"
+    },
+    {
+      "id": "F316",
+      "type": "freight",
+      "origin": "KURYK",
+      "destination": "EAST",
+      "appear": "20:00",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "24:35"
+    },
+    {
+      "id": "F318",
+      "type": "freight",
+      "origin": "JUNC",
+      "destination": "EAST",
+      "appear": "02:30",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "06:05"
+    },
+    {
+      "id": "C209",
+      "type": "container",
+      "origin": "UZB",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "08:10",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "target_ferry": "FA2",
+      "planned_arrival": "10:10"
+    },
+    {
+      "id": "C210",
+      "type": "container",
+      "origin": "ATY",
+      "destinations": [
+        "AKTAU",
+        "KURYK"
+      ],
+      "appear": "13:20",
+      "length_m": 1000,
+      "wagons": 28,
+      "cargo": "ferry",
+      "target_ferry": "FA3",
+      "planned_arrival": "16:25"
+    },
+    {
+      "id": "F601",
+      "type": "freight",
+      "origin": "ZHAN",
+      "destination": "ATY",
+      "appear": "05:40",
+      "length_m": 820,
+      "wagons": 45,
+      "planned_arrival": "09:10"
+    },
+    {
+      "id": "F602",
+      "type": "freight",
+      "origin": "ATY",
+      "destination": "ZHAN",
+      "appear": "10:30",
+      "length_m": 820,
+      "wagons": 45,
+      "planned_arrival": "13:55"
+    },
+    {
+      "id": "F603",
+      "type": "freight",
+      "origin": "AKTAU",
+      "destination": "UZB",
+      "appear": "11:30",
+      "length_m": 800,
+      "wagons": 45,
+      "planned_arrival": "14:00"
+    }
+  ],
+  "ferries": [
+    {
+      "id": "FA1",
+      "port": "AKTAU",
+      "capacity_wagons": 56,
+      "planned_arrival": "06:00",
+      "actual_arrival": "06:20",
+      "eta_updates": [
+        {
+          "at": "04:00",
+          "eta": "06:20"
+        }
+      ]
+    },
+    {
+      "id": "FA2",
+      "port": "AKTAU",
+      "capacity_wagons": 56,
+      "planned_arrival": "14:00"
+    },
+    {
+      "id": "FA3",
+      "port": "AKTAU",
+      "capacity_wagons": 56,
+      "planned_arrival": "22:00"
+    },
+    {
+      "id": "FK1",
+      "port": "KURYK",
+      "capacity_wagons": 56,
+      "planned_arrival": "10:00"
+    },
+    {
+      "id": "FK2",
+      "port": "KURYK",
+      "capacity_wagons": 56,
+      "planned_arrival": "20:00"
+    }
+  ],
+  "disruptions": [
+    {
+      "id": "D1",
+      "kind": "loco_failure",
+      "train": "F306",
+      "at": "10:50",
+      "duration_min": 50,
+      "announced_duration_min": 30
+    },
+    {
+      "id": "D2",
+      "kind": "maintenance_window",
+      "segment": "R4-R3",
+      "start": "13:00",
+      "duration_min": 90,
+      "announce_at": "00:00"
+    }
+  ],
+  "dispatcher": {
+    "directives": [
+      {
+        "train": "C203",
+        "at": "JUNC",
+        "route": "SAY"
+      },
+      {
+        "train": "F304",
+        "at": "R1",
+        "wait_for": "C204"
+      }
+    ]
+  }
+}
