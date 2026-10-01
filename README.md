@@ -24,24 +24,95 @@ frontend/src/     Menu, Game, WorldMap + world.js (живая карта), Simpl
 
 ## Запуск
 
-**Docker (проще всего):**
+Из коробки нужен только один инструмент на выбор: **Docker** (ничего больше ставить не придётся)
+либо **Python 3.11+ и Node 20.19+ / 22.12+** для запуска без Docker.
 
 ```bash
-docker compose up -d --build      # http://localhost:8080
-docker compose down
+git clone https://github.com/nori688/hackaton-39-404-found.git
+cd hackaton-39-404-found
+```
+
+### Вариант 1 — Docker (проще всего)
+
+```bash
+docker compose up -d --build      # первая сборка ~1–2 мин
+# открыть http://localhost:8080
+
+docker compose logs -f backend    # логи (Ctrl+C — выйти, контейнеры продолжают работать)
+docker compose ps                 # состояние сервисов
+docker compose down               # остановить
 ```
 
 Два контейнера: `backend` (FastAPI + симулятор, реплей считает в нескольких процессах) и `frontend`
-(nginx с собранным React, `/api` проксируется на backend). Ночной реплей в Docker Desktop идёт медленнее,
-чем нативно, — столько ядер, сколько выдано виртуальной машине Docker.
+(nginx с собранным React, `/api` проксируется на backend). Бэкенд поднимается за ~5–10 с, фронт ждёт
+его healthcheck — если открыть страницу раньше, дождаться и обновить.
 
-**Без Docker (для разработки):**
+Проверка, что всё живо:
 
 ```bash
-cd backend && pip install -r requirements.txt && uvicorn api:app --port 8000
-cd frontend && npm install && npm run dev        # http://localhost:5173
-cd backend && python -m pytest -q tests          # тесты
+curl http://localhost:8080/api/health        # {"ok":true}
 ```
+
+Порт 8080 занят другим проектом — поменять в `docker-compose.yml` строку `- "8080:80"` на
+`- "8090:80"` и открывать `http://localhost:8090`. Ночной реплей в Docker Desktop идёт медленнее,
+чем нативно: столько ядер, сколько выдано виртуальной машине Docker (Settings → Resources → CPU).
+
+### Вариант 2 — без Docker (для разработки)
+
+Два терминала. Бэкенд:
+
+```bash
+cd backend
+python -m venv .venv
+source .venv/bin/activate                 # Windows PowerShell: .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python -m uvicorn api:app --reload --port 8000
+# проверка: http://127.0.0.1:8000/api/health → {"ok":true}, Swagger: http://127.0.0.1:8000/docs
+```
+
+Фронтенд:
+
+```bash
+cd frontend
+npm install
+npm run dev                               # http://localhost:5173
+```
+
+Открывать надо **5173**: Vite сам проксирует `/api` на `127.0.0.1:8000` (`vite.config.js`), CORS для
+5173 прописан в `api.py`. Dev-сервер слушает только localhost; чтобы открыть с другого устройства —
+`npm run dev -- --host`.
+
+### Тесты, консоль и сборка
+
+```bash
+cd backend
+python -m pytest -q tests                                  # 77 тестов, ~2 мин
+python cli.py day1 --dispatcher priority                   # прогон дня в консоли
+python cli.py day2 --dispatcher scripted --mode oracle --json out.json
+python cli.py day1 --dispatcher priority --events          # + журнал событий и отклонений
+python -m scenarios.build                                  # пересобрать scenarios/day1.json, day2.json
+
+cd ../frontend
+npm run lint                                               # oxlint
+npm run build                                              # dist/ — так же собирает Docker
+```
+
+Прод-сборка без Docker: `npm run build` кладёт статику в `frontend/dist`, её достаточно раздать любым
+статик-сервером, но `/api` должен проксироваться на бэкенд — как в `frontend/nginx.conf`.
+
+### Если не поднимается
+
+- `port is already allocated` / `bind: address already in use` — порт занят. Windows:
+  `netstat -ano | findstr :8080` → `taskkill /PID <pid> /F`; или просто сменить порт
+  (`- "8090:80"` в compose, `--port 8001` у uvicorn).
+- `'compose' is not a docker command` — обновить Docker Desktop или использовать `docker-compose`.
+- Страница открылась, а данных нет — бэкенд ещё стартует или упал: `docker compose logs backend`
+  (Docker) либо окно с uvicorn (нативно). У игры в памяти (`/api/game/{id}`) после перезапуска
+  сервера сессии теряются — начать смену заново.
+- `npm install` падает на версии Node — Vite 8 требует Node 20.19+ или 22.12+ (`node -v`).
+- `python` не найден (Windows) — вместо `python` использовать `py` (`py -m uvicorn api:app --port 8000`).
+- Ночной реплей очень долгий — дать Docker больше ядер или запустить бэкенд нативно; в API реплей
+  считают `WORKERS = min(3, ядра − 1)` процесса (`api.py`).
 
 ## Как играть
 
